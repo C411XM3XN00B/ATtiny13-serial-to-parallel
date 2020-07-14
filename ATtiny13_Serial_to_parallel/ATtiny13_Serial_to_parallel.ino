@@ -27,7 +27,7 @@ void setup() {
 }
 
 void loop() {
-  while (Serial.read() == 'B') {             //waits for 'B' as indicator for the start of a transmission
+  while (Serial.read() == 'B') {          //waits for 'B' as indicator for the start of a transmission
     for (int i = 0; i < 8; i++) {         //reads the serial input and puts 8bits in the serialbyte array
       delay(1);
       raw = Serial.read() - 48;
@@ -37,14 +37,14 @@ void loop() {
       else if (raw == 0) {
         bitvalue = 0;  
       } 
-      else {                              //will automatically set bits to zero if not enough digits were sent
+      else {                              //keeps bit as is if input isn't '0' or '1'
         bitvalue = serialbyte[i];
       }
       serialbyte[i] = bitvalue;
     } 
 
     
-    Serial.print("received Byte: B");              //optional, sends the received binary values back to host
+    Serial.print("received Byte: B");     //optional, sends the received binary values back to host
     for (int i = 0; i < 8; i++) {
       Serial.print(serialbyte[i]);
     }
