@@ -34,8 +34,11 @@ void loop() {
       if (raw == 1) {
         bitvalue = 1;  
       }
+      else if (raw == 0) {
+        bitvalue = 0;  
+      } 
       else {                              //will automatically set bits to zero if not enough digits were sent
-        bitvalue = 0;
+        bitvalue = serialbyte[i];
       }
       serialbyte[i] = bitvalue;
     } 
